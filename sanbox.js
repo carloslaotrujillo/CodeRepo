@@ -8,10 +8,11 @@
     let res = 0;
 
     while(startIndx < prices.length) {
-        if(prices[endIndx] - prices[startIndx] < res) {
+        if(prices[endIndx] - prices[startIndx] <= res) {
             endIndx--
         }
-        if(prices[endIndx] - prices[startIndx] < res) {
+        if(prices[endIndx] - prices[startIndx] > res) {
+            res = prices[endIndx] - prices[startIndx]
             endIndx--
         }
         if(endIndx === startIndx) {
