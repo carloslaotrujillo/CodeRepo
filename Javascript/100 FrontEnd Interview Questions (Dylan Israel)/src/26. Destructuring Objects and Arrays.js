@@ -9,5 +9,6 @@ const { name: firstName, nickname } = {
   middle: "Arthur",
   nickname: "Johnny",
 };
+
 console.log(firstName);
 console.log(nickname);
