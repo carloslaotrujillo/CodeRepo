@@ -1,0 +1,2 @@
+// sample export
+export {};

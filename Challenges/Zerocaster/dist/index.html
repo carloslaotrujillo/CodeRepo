@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Zerocater Frontend Take Home Exam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class="section">
+  <h2 class="title">Instructions</h2>
+  <div class="content">
+    <div class="block">
+      Welcome to Zerocater's frontend screening exam! We ask that you build a table representing user data in React. 
+      </p>
+      
+      <h3>Setup</h3>
+      <ol>
+        <li> Click Fork at the bottom right to create a copy of this question</li>
+        <li> Now build your solution, run as many times as you want to try your script. Once done, click Export > Zip at the bottom right and send us your Zip file.</li>
+      </ol>
+      
+      <h3>Requirements:</h3>
+      <ul>
+        <li>
+          Convert all user data fields into their own column
+        </li>
+        <li>
+          The default sorting for the table should be by user first name then last name
+        </li>
+        <li>
+          All columns should also be sortable where collisions are handled by the default sorting
+        </li>
+        <li>
+          Alternate sort direction if the sorted column is clicked again
+        </li>
+        <li>
+          Indicate which column is sorted and in which direction
+        </li>
+        <li>
+          Dates should be represented in the format <code>Jan 1, 2020</code>
+        </li>
+        <li>
+          Choose an icon from Material Icons and show that icon if a boolean column is true
+        </li>
+        <li>
+          Avoid importing additional JS libraries
+        </li>
+      </ul>
+      Update the JS section in codepen with your solution. The target time for this app is 1 hour. Add any notes, issues you ran into, or general feedback under the "Notes" section.
+      We are using <a href="https://bulma.io/documentation/">Bulma</a> and <a href="https://fonts.google.com/icons?selected=Material+Icons">Material Icons</a> to style this app so you don't have to worry about writing your own.
+      User data can be grabbed from <code>window.userData</code> and is an array of objects with the following structure:
+    </div>
+    <div class="block">
+      <pre style="width: min-content;">
+  {
+    id: 100,
+    firstName: "Marianne",
+    lastName: "Halvorson",
+    company: "Yundt - Padberg",
+    jobTitle: "Product Accountability Producer",
+    state: "South Dakota",
+    isSiteAdmin: false,
+    dateJoined: "1990-04-17T05:58:29.564Z"
+  }</pre>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <h2 class="title">Notes</h2>
+  <div class="block">
+    Feedback? Implementation issues? Restaurant recommendations? Thoughts on tabs vs spaces?
+  </div>
+</section>
+<section class="section">
+  <h2 class="title">Users Table</h2>
+  <div id="root" class="table-container"></div>
+</section>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.min.js'></script><script type="module" src="./script.js"></script>
+
+</body>
+</html>
