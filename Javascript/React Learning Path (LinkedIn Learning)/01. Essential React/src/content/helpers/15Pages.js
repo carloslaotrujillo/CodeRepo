@@ -8,7 +8,7 @@ export function Home() {
       <nav>
           <Link to='about'>About</Link>
           <Link to='events'>Events</Link>
-          <Link to='contact'>Contact</Link>          
+          <Link to='contact'>Contact</Link>
       </nav>
     </div>
   );
@@ -39,7 +39,6 @@ export function Contact() {
 }
 
 export function Inexistent404() {
-    
     return (
       <div>
         <h1>[404 This Page "{useLocation().pathname}" doesn't exist]</h1>
