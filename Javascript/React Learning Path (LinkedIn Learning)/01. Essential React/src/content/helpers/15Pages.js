@@ -45,3 +45,4 @@ export function Inexistent404() {
       </div>
     );
   }
+  

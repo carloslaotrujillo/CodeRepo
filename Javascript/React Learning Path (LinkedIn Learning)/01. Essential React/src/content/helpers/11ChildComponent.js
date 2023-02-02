@@ -10,4 +10,3 @@ function ChildComponent() {
 }
 
 export default ChildComponent;
-

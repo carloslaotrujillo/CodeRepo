@@ -7,4 +7,3 @@ function CreatingComponents() {
 }
 
 export default CreatingComponents;
-
