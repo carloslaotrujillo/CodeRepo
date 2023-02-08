@@ -15,7 +15,7 @@ const dataObjects = data.map((item, i) => ({id: i, name: item}));
 
 function WorkingWithLists() {
   return <div>
-      <ul style={{textAlign: "left"}}>
+      <ul style={{textAlign: "center", listStyleType: "none"}}>
           {dataObjects.map((item) => 
           <li key={item.id}>
               {item.name}

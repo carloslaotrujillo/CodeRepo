@@ -8,6 +8,8 @@
 // you optimize performance for components that trigger deep updates because you can pass dispatch 
 // down instead of callbacks.
 
+let initialState = 0;
+
 function reducer(state, action) {   
   switch (action) {
     case 'increment':
@@ -20,7 +22,7 @@ function reducer(state, action) {
 }
 
 function Counter() {
-  const [counter, counterChange] = useReducer(reducer, 0);
+  const [counter, counterChange] = useReducer(reducer, initialState);
 
   return (
     <>
