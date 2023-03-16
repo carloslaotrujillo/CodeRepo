@@ -17,3 +17,10 @@
 * Questions for the interviewer
     - Where the company is headed in the next 3-5 years time?
     - Why do you think I might be a good candidate for this position?  
+  
+* Secret Weapon
+    - Simplicity over complexity
+    - Premature optimization is the root of all evil
+    - Overall goal, not myopic
+    - No complaining about client/code/etc.
+    - No ego
