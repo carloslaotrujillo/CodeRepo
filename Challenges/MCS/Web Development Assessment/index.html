@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="https://mcscontrols.com/images/MCS-Logo.png" />
+		<title>MCS Table</title>
+		<style>
+			body {
+				width: 75%;
+				padding: 5rem;
+				margin: 0 auto;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			th,
+			td {
+				padding: 8px;
+				text-align: center;
+				border: 1px solid black;
+			}
+			tr.disabled {
+				background-color: yellow;
+			}
+			input[type="text"] {
+				width: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root"></div>
+
+		<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+		<script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+		<script type="text/babel">
+			const { useState } = React;
+
+			const App = () => {
+				const [totalSIs, setTotalSIs] = useState(20);
+
+				const updateDisabledRows = (value) => {
+					setTotalSIs(value);
+				};
+
+				const incrementSIs = () => {
+					if (totalSIs < 112) {
+						updateDisabledRows(totalSIs + 1);
+					}
+				};
+
+				const decrementSIs = () => {
+					if (totalSIs > 0) {
+						updateDisabledRows(totalSIs - 1);
+					}
+				};
+
+				const toggleButton = (index) => {
+					const rowsCopy = [...rows];
+					rowsCopy[index].buttonText = rowsCopy[index].buttonText === "Auto" ? "Manual" : "Auto";
+					setRows(rowsCopy);
+				};
+
+				const [rows, setRows] = useState(
+					Array.from({ length: 112 }, (_, i) => ({
+						id: i + 1,
+						buttonText: "Auto",
+					}))
+				);
+
+				return (
+					<div className="App">
+						<div>
+							<label htmlFor="totalSIs">Total Number of SI's: </label>
+							<input type="number" id="totalSIs" min="0" max="112" value={totalSIs} onChange={(e) => updateDisabledRows(parseInt(e.target.value))} />
+							<button onClick={decrementSIs}>-</button>
+							<button onClick={incrementSIs}>+</button>
+						</div>
+						<br />
+						<table>
+							<thead>
+								<tr>
+									<th>SI</th>
+									<th>Name</th>
+									<th>Display Type</th>
+									<th>Auto/Manual</th>
+								</tr>
+							</thead>
+							<tbody>
+								{rows.map((row, index) => (
+									<tr key={row.id} className={index >= totalSIs ? "disabled" : ""}>
+										<td>SI{row.id}</td>
+										<td>
+											<input type="text" id={`input${row.id}`} placeholder="Enter name" disabled={index >= totalSIs} />
+										</td>
+										<td>
+											<select id={`select${row.id}`} disabled={index >= totalSIs}>
+												<option>dropdown1</option>
+												<option>dropdown2</option>
+											</select>
+										</td>
+										<td>
+											<button id={`button${row.id}`} onClick={() => toggleButton(index)} disabled={index >= totalSIs}>
+												{row.buttonText}
+											</button>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				);
+			};
+
+			ReactDOM.render(<App />, document.getElementById("root"));
+		</script>
+	</body>
+</html>
