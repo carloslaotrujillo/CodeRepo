@@ -1,0 +1,70 @@
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#dots-drag {
+    display: flex;
+}
+
+#dots-drag img {
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 1rem 1.25rem;
+}
+
+#dots-socket {
+    z-index: -1;
+    position: relative;
+}
+
+#dots-socket div {
+    width: 8rem;
+    height: 8rem;
+    position: absolute;
+    visibility: hidden;
+    border-radius: 50%;
+}
+
+#black1-socket {
+    top: 169px;
+    left: 25px;
+}
+
+#green-socket {
+    top: 313px;
+    left: 121px;
+}
+
+#blue-socket {
+    top: 25px;
+    left: 253px;
+}
+
+#red-socket {
+    top: 49px;
+    left: 433px;
+}
+
+#black2-socket {
+    top: 265px;
+    left: 397px;
+}
+
+#reset {
+    color: white;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: 300ms;
+    font-size: 1.25em;
+    border-radius: 6px;
+    padding: 0.5rem 1.25rem;
+    background-color: black;
+    border: 2px solid black;
+}
+
+#reset:hover {
+    color: black;
+    background-color: white;
+}
