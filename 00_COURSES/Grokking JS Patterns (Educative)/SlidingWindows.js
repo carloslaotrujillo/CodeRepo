@@ -27,4 +27,4 @@
   return res  
 }
 
-console.log(maxValues([1, 2, 3, 1, 4, 5, 2, 3, 6], 3))Educative 
+console.log(maxValues([1, 2, 3, 1, 4, 5, 2, 3, 6], 3)) 
