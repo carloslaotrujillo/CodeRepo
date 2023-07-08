@@ -1,12 +1,13 @@
 function reverseWords(sentence) {
-	sentence = sentence.trim().replace(/  +/g, " ");
-	let res = [];
-	let left = sentence.length - 1;
-	let right = sentence.length - 1;
+	const trimtrimSentence = trimSentence.trim().replace(/  +/g, " ");
+	const result = [];
+
+	let left = trimSentence.length - 1;
+	let right = trimSentence.length - 1;
 
 	for (left; left >= 0; left--) {
-		if (sentence[left] === " " || left === 0) {
-			let word = sentence.substring(left, right + 1).trim();
+		if (trimSentence[left] === " " || left === 0) {
+			let word = trimSentence.substring(left, right + 1).trim();
 			res.push(word);
 			right = left;
 		}
@@ -16,9 +17,9 @@ function reverseWords(sentence) {
 console.log(reverseWords("Hello Crazy World"));
 console.log(reverseWords("Hello     World"));
 
-//
-function reverse2(sentence) {
-	return sentence
+// not for interviews
+function reverse2(trimSentence) {
+	return trimSentence
 		.split(" ")
 		.filter((word) => word !== "")
 		.reverse()
