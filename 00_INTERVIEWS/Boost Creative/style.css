@@ -1,0 +1,248 @@
+* {
+  color: #ffffff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+  width: 100%;
+  margin: 32px auto 128px;
+  max-width: 1536px;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  letter-spacing: 2px;
+  background-size: cover;
+  -webkit-transition-delay: 100ms;
+          transition-delay: 100ms;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 35% top;
+}
+
+body::after {
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  position: fixed;
+  background-color: #000000;
+}
+
+.slide1 {
+  background-image: url("./assets/bg1.jpg");
+}
+
+.slide2 {
+  background-image: url("./assets/bg2.jpg");
+}
+
+.slide3 {
+  background-image: url("./assets/bg3.jpg");
+}
+
+.nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 16px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid #ffffff;
+}
+
+.nav-bar .logo {
+  width: 100%;
+  text-align: center;
+}
+
+.nav-bar .logo a img {
+  height: 72px;
+  width: 265px;
+}
+
+.nav-bar .nav-links {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 52px 0;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.nav-bar .nav-links a {
+  padding: 14px 0;
+  font-weight: 300;
+  font-size: 1.25rem;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.nav-bar .nav-links a:hover {
+  color: #f46527;
+  text-decoration: underline;
+}
+
+.nav-bar .contact {
+  width: 100%;
+  text-align: center;
+}
+
+.nav-bar .contact button {
+  width: 200px;
+  height: 50px;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+  font-size: 1.25rem;
+  border-radius: 2px;
+  border: 3px solid #f46527;
+  background-color: transparent;
+}
+
+.nav-bar .contact button:hover {
+  cursor: pointer;
+  background-color: #f46527;
+}
+
+.hero-message {
+  margin: 32px;
+  text-align: center;
+}
+
+.hero-message h1 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 4rem;
+}
+
+.hero-message h1 span {
+  padding: 0 12px;
+  font-weight: 700;
+  background-color: #000000;
+}
+
+.hero-message p {
+  font-weight: 300;
+  font-size: 1.875rem;
+}
+
+.hero-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.hero-buttons .hero-button {
+  width: 284px;
+  height: 64px;
+  border-radius: 4px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1.375rem;
+  border: 3px solid #ffffff;
+  background-color: transparent;
+  margin: 12px 0;
+}
+
+.hero-buttons .hero-button.active {
+  border: 0;
+  background-color: #f46527;
+}
+
+.hero-buttons .hero-button:hover {
+  cursor: pointer;
+}
+
+.off-bg {
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.1;
+  display: none;
+  display: block;
+  font-size: 20rem;
+  font-weight: 700;
+  position: absolute;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .hero-message {
+    margin: 64px 32px;
+  }
+  .off-bg {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  body {
+    margin-bottom: 32px;
+  }
+  .nav-bar {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding-bottom: 0px;
+  }
+  .nav-bar .logo {
+    width: 30%;
+    text-align: left;
+  }
+  .nav-bar .logo a img {
+    width: 300px;
+  }
+  .nav-bar .nav-links {
+    width: 40%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .nav-bar .contact {
+    width: 30%;
+    text-align: right;
+  }
+  .hero-message {
+    height: 300px;
+    margin: 100px 32px 50px;
+  }
+  .hero-message h1 {
+    font-size: 6.25rem;
+  }
+  .hero-buttons {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .hero-buttons .hero-button {
+    width: 316px;
+    height: 72px;
+    margin: 0 auto;
+  }
+  .off-bg {
+    display: block;
+  }
+}
+/*# sourceMappingURL=style.css.map */
