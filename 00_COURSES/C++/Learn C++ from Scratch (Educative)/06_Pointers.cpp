@@ -37,9 +37,17 @@ int main()
 // When you have finished using it, you must delete it. Otherwise, the pointed memory is
 // inaccessible, and the result is memory leak.
 
-int *ptr = new int;
-/* ... */
-delete ptr;
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int *ptr = new int;
+    int val = 5;
+    ptr = &val;
+    cout << *ptr << endl;
+    delete ptr;
+}
 
 // C++ allows us to create arrays and then use pointers to carry out operations on those arrays.
 
