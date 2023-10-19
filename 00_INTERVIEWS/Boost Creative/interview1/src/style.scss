@@ -1,0 +1,228 @@
+* {
+    color: #ffffff;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    width: 100%;
+    margin: 32px auto 128px;
+    max-width: 1536px;
+    transition: 500ms;
+    letter-spacing: 2px;
+    background-size: cover;
+    transition-delay: 100ms;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 35% top;
+
+    &::after {
+        top: 0;
+        left: 0;
+        content: '';
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        position: fixed;
+        background-color: #000000;
+    }
+}
+
+.slide1 {
+    background-image: url('./assets/bg1.jpg');
+}
+
+.slide2 {
+    background-image: url('./assets/bg2.jpg');
+}
+
+.slide3 {
+    background-image: url('./assets/bg3.jpg');
+}
+
+.nav-bar {
+    display: flex;
+    margin: 0 16px;
+    align-items: center;
+    padding-bottom: 16px;
+    flex-direction: column;
+    border-bottom: 1px solid #ffffff;
+
+    .logo {
+        width: 100%;
+        text-align: center;
+
+        a img {
+            height: 72px;
+            width: 265px;
+        }
+    }
+
+    .nav-links {
+        width: 100%;
+        display: flex;
+        margin: 52px 0;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-around;
+
+        a {
+            padding: 14px 0;
+            font-weight: 300;
+            font-size: 1.25rem;
+            text-decoration: none;
+            text-underline-offset: 4px;
+
+            &:hover {
+                color: #f46527;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .contact {
+        width: 100%;
+        text-align: center;
+
+        button {
+            width: 200px;
+            height: 50px;
+            transition: 500ms;
+            font-size: 1.25rem;
+            border-radius: 2px;
+            border: 3px solid #f46527;
+            background-color: transparent;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #f46527;
+            }
+        }
+    }
+}
+
+.hero-message {
+    margin: 32px;
+    text-align: center;
+
+    h1 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 4rem;
+    }
+
+    h1 span {
+        padding: 0 12px;
+        font-weight: 700;
+        background-color: #000000;
+    }
+
+    p {
+        font-weight: 300;
+        font-size: 1.875rem;
+    }
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+
+    .hero-button {
+        width: 284px;
+        height: 64px;
+        border-radius: 4px;
+        align-self: center;
+        font-size: 1.375rem;
+        border: 3px solid #ffffff;
+        background-color: transparent;
+        margin: 12px 0;
+
+        &.active {
+            border: 0;
+            background-color: #f46527;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.off-bg {
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.1;
+    display: none;
+    display: block;
+    font-size: 20rem;
+    font-weight: 700;
+    position: absolute;
+}
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    .hero-message {
+        margin: 64px 32px;
+    }
+
+    .off-bg {
+        display: block;
+    }
+}
+
+// Desktop
+@media screen and (min-width: 1280px) {
+    body {
+        margin-bottom: 32px;
+    }
+
+    .nav-bar {
+        flex-direction: row;
+        padding-bottom: 0px;
+
+        .logo {
+            width: 30%;
+            text-align: left;
+
+            a img {
+                width: 300px;
+            }
+        }
+
+        .nav-links {
+            width: 40%;
+            flex-direction: row;
+        }
+
+        .contact {
+            width: 30%;
+            text-align: right;
+        }
+
+    }
+
+    .hero-message {
+        height: 300px;
+        margin: 100px 32px 50px;
+
+        h1 {
+            font-size: 6.25rem;
+        }
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+
+        .hero-button {
+            width: 316px;
+            height: 72px;
+            margin: 0 auto;
+        }
+    }
+
+    .off-bg {
+        display: block;
+    }
+}

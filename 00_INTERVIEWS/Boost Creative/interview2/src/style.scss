@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;    
+}
+
+.intro, 
+.footer {
+    height: 1080px;    
+    background-color: #979797; 
+}
+
+.container {
+    text-align: center;    
+    padding: 6rem 0 7rem 0;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-image: url("./assets/bg1.png");
+
+    h2 {
+        font-size: 2.5em;
+        color: #334C94;
+        margin-bottom: 20px;
+    }
+    
+    p {        
+        padding: 1.5rem;
+        max-width: 650px;
+        color: #979797;
+        line-height: 1.65;
+        margin: 0 auto 2rem;
+    }
+    
+    .stats {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        
+        .stat {
+            width: 30%;
+            min-width: 500px;               
+        }
+        
+        .stat.funds {
+            .symbol,
+            .number {
+                color: #5bc6b4;
+            }
+            
+            .label {
+                position: relative;
+                left: 65px;
+                bottom: 5px;
+            }
+        }
+
+        .stat.hours {
+            .symbol,
+            .number {
+                color: #334C94;
+            }
+            
+            .label {
+                position: relative;
+                right: 65px;
+                bottom: 5px;
+            }
+        }
+
+        .symbol,
+        .number {            
+            font-size: 8em;            
+            font-weight: 900;
+            margin-bottom: 10px;
+        }        
+
+        .label {
+            font-size: 1em;  
+            font-weight: 600;  
+        }
+    }    
+}
+
+@media (max-width: 480px) {
+    .container {       
+        background-size:contain;        
+
+        .stat {
+            margin-bottom: 2rem;
+    
+            .symbol,
+            .number {
+                font-size: 5em !important;
+            }            
+        }
+
+        .stat.hours .label {
+            right: -45px !important;
+        }
+    }
+}

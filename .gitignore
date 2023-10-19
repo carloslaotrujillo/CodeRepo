@@ -1,5 +1,4 @@
 **/node_modules/
-**.dSYM
 .DS_Store
 .vscode
-sanbox
+

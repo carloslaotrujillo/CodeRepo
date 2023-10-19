@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+}
+
+.intro,
+.footer {
+  height: 1080px;
+  background-color: #979797;
+}
+
+.container {
+  text-align: center;
+  padding: 6rem 0 7rem 0;
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-image: url("./assets/bg1.png");
+}
+.container h2 {
+  font-size: 2.5em;
+  color: #334C94;
+  margin-bottom: 20px;
+}
+.container p {
+  padding: 1.5rem;
+  max-width: 650px;
+  color: #979797;
+  line-height: 1.65;
+  margin: 0 auto 2rem;
+}
+.container .stats {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.container .stats .stat {
+  width: 30%;
+  min-width: 500px;
+}
+.container .stats .stat.funds .symbol,
+.container .stats .stat.funds .number {
+  color: #5bc6b4;
+}
+.container .stats .stat.funds .label {
+  position: relative;
+  left: 65px;
+  bottom: 5px;
+}
+.container .stats .stat.hours .symbol,
+.container .stats .stat.hours .number {
+  color: #334C94;
+}
+.container .stats .stat.hours .label {
+  position: relative;
+  right: 65px;
+  bottom: 5px;
+}
+.container .stats .symbol,
+.container .stats .number {
+  font-size: 8em;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.container .stats .label {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .container {
+    background-size: contain;
+  }
+  .container .stat {
+    margin-bottom: 2rem;
+  }
+  .container .stat .symbol,
+  .container .stat .number {
+    font-size: 5em !important;
+  }
+  .container .stat.hours .label {
+    right: -45px !important;
+  }
+}/*# sourceMappingURL=style.css.map */
