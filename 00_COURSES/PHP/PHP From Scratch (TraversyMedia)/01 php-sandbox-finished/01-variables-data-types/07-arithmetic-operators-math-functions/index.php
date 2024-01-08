@@ -33,9 +33,10 @@
 
     // rand() - Generates a random number
     $output = rand();
+    $output = getrandmax();
     $output = rand(1, 10);
 
-     // round() - Rounds a floating-point number
+    // round() - Rounds a floating-point number
     $output = round(4.5);
 
     // ciel() - Rounds a number up to the nearest integer
