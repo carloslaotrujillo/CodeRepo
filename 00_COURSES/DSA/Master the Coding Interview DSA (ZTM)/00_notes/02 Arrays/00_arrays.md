@@ -24,3 +24,53 @@ Arrays is a data sctructure to store data sequentially. It is a collection of it
 
 ### Strings can be considered as arrays of characters. We can use the same methods as arrays to manipulate strings like the split method.
     
+### Arrays are good for 
+- Fast lookups
+- Fast push/pop
+- Ordered
+
+### Arrays are bad for
+- Slow inserts
+- Slow deletes
+- Fixed size (if using static arrays)
+- Not sorted
+
+### Implemention of an array in JavaScript 
+```javascript
+class MyArray {
+    constructor() {
+        this.length = 0;
+        this.data = {};
+    }
+
+    get(index) {
+        return this.data[index];
+    }
+
+    push(item) {
+        this.data[this.length] = item;
+        this.length++;
+        return this.length;
+    }
+
+    pop() {
+        const lastItem = this.data[this.length - 1];
+        delete this.data[this.length - 1];
+        this.length--;
+        return lastItem;
+    }
+
+    delete(index) {
+        const item = this.data[index];
+        this.shiftItems(index);
+        return item;
+    }
+
+    shiftItems(index) {
+        for (let i = index; i < this.length - 1; i++) {
+            this.data[i] = this.data[i + 1];
+        }
+        delete this.data[this.length - 1];
+        this.length--;
+    }
+}
