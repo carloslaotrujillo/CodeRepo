@@ -1,0 +1,1325 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>JS Front End Interview Questions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e8dddf24-8d6d-4dde-bd27-332c62bbff00" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="JS%20Front%20End%20Interview%20Questions%20e8dddf248d6d4ddebd27332c62bbff00/63921.png"/></div><h1 class="page-title">JS Front End Interview Questions</h1><p class="page-description"></p></header><div class="page-body"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0c13bb49-d542-4246-95fd-8284aad58210" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">/*
+100 Front End Interview Questions Challenge
+
+https://www.udemy.com/course/100-front-end-interview-questions-challenge/
+
+DO DO:
+- Watch &amp; Understand
+- Do (Write/Code the solution with you own words AND record and explain your own solutions)
+- Rinse and Repeat
+*/</code></pre><h2 id="809c33b4-a0a8-4a69-875f-d0c49c959a7e" class="">Data Types</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6e8ad4c1-c17b-4db9-b828-1e4c5878d077" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">/*
+JS Data Types
+
+=&gt; Primitives
+    - Boolean (Boolean represents a logical entity and can have two values: true and false.)
+
+    - Null (Empty value user assigned. The Null type has exactly one value: null.)
+
+    - Undefined (A variable that has not been assigned a value has the value undefined.)
+
+    - Number (The Number type is a double-precision 64-bit binary format IEEE 754 value (numbers between -(2^53 − 1) and 2^53 − 1). In addition to representing floating-point numbers, the number type has three symbolic values: +Infinity, -Infinity, and NaN (&quot;Not a Number&quot;). To check for the largest available value or smallest available value within ±Infinity, you can use the constants Number.MAX_VALUE or Number.MIN_VALUE.)
+
+    - BigInt (The BigInt type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. With BigInts, you can safely store and operate on large integers even beyond the safe integer limit for Numbers.)
+
+    - String (Used to represent textual data. It is a set of &quot;elements&quot; of 16-bit unsigned integer values. Each element in the String occupies a position in the String. The first element is at index 0, the next at index 1, and so on. The length of a String is the number of elements in it. Unlike some programming languages (such as C), JavaScript strings are immutable. This means that once a string is created, it is not possible to modify it.)
+
+    - Symbol (A Symbol is a unique and immutable primitive value and may be used as the key of an Object property. In some programming languages, Symbols are called &quot;atoms&quot;.)
+
+=&gt; Objects (Complex data type that allows you to store collections of data. An object contains properties, defined as a key-value pair. A property key (name) is always a string, but the value can be any data type, like strings, numbers, booleans, or complex data types like arrays, function and other objects.)
+
+Not Data Type
+
+    - Arrays (Type of object used for storing multiple values in single variable. Each value (also called an element) in an array has a numeric position, known as its index, and it may contain data of any data type-numbers, strings, booleans, functions, objects, and even other arrays.)
+
+    - Function (Callable object that executes a block of code. Since functions are objects, so it is possible to assign them to variables)
+
+    - Maps (The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value (both objects and primitive values) may be used as either a key or a value.)
+
+    - Sets (Set objects are collections of values. You can iterate through the elements of a set in insertion order. A value in the Set may only occur once; it is unique in the Set&#x27;s collection.)
+*/</code></pre><h2 id="b25cc760-fc52-4381-8370-96226a9ad83a" class="">Const vs let vs var </h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fe8dd480-5a74-4400-8bf8-b6d1b76a6d5a" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">/*
+&quot;const&quot; and &quot;let&quot; were added on ES6 to solve the problem that &quot;var&quot; have with lexical scope and hoisting. Meaning that when declaring variable with &quot;var&quot;, this variable will hoist even if its value is never run, creating an undesirable value for the outer scope code if this variable where to be used. This is a huge issue since the code will run/render differently that it would read, and that will cause inherent bug on our software.
+
+&quot;const&quot; and &quot;let&quot; on the other hand implement what we call block scope, meaning thos variable will only exist on that specific block of code solving the issue there of &quot;var&quot;
+*/</code></pre><h2 id="2117dbea-a744-4b57-9004-20be362506d7" class="">Pass by Value &amp; pass by Reference</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="425781fc-13d7-4e6f-a96d-74ccfc4d2637" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">/*
+Pass by Value and Reference like the name mention is when we assign or pass as parameter either by its value or by a reference to the value. Primitives are bound to pass by value and objects are passed by reference. When we passed by value like mentioned before when make a copy of the value, so if the copied value is modified the original value is still the same. On the other hand if we pass by reference, if we modified the copied value we will also modify the original since is only a copied reference of the value on memory, a pointer if you might, like on C++. This is why we need to be careful while upating objects on React if we want save/use the previous value, in that case the recommended strategy is to make a copy of the object eithe with the map() method for arrays or the JSON.stringify() and JSON.parse() for objects, or any other pre-existing methods on the current JS landscape (ES6 spread operator, lodash, underscore, etc).
+*/</code></pre><h2 id="e50b28fe-caee-494f-b635-1e80fa8653bc" class="">Array Methods</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6a60159e-be07-4905-bec2-9a456ee971fb" class="code"><code class="language-JavaScript">// =&gt; map() - The map() method creates a new array populated with the 
+// results of calling a provided function on every element in the calling array.
+const array1 = [1, 4, 9, 16];
+// pass a function to map
+const map1 = array1.map((x) =&gt; x * 2);
+console.log(map1); // Array [2, 8, 18, 32]
+
+// =&gt; filter() - The filter() method creates a new array with all elements that 
+// pass the test implemented by the provided function.
+const words = [
+  &quot;spray&quot;,
+  &quot;limit&quot;,
+  &quot;elite&quot;,
+  &quot;exuberant&quot;,
+  &quot;destruction&quot;,
+  &quot;present&quot;,
+];
+const result = words.filter((word) =&gt; word.length &gt; 6);
+console.log(result); // Array [&quot;exuberant&quot;, &quot;destruction&quot;, &quot;present&quot;]
+
+// =&gt; reduce() - The reduce() method executes a user-supplied &quot;reducer&quot; callback
+// function on each element of the array, in order, passing in the return value
+// from the calculation on the preceding element. The final result of running the
+// reducer across all elements of the array is a single value. The first time that
+// the callback is run there is no &quot;return value of the previous calculation&quot;.
+// If supplied, an initial value may be used in its place. Otherwise the array
+// element at index 0 is used as the initial value and iteration starts from the
+// next element (index 1 instead of index 0).
+const array2 = [1, 2, 3, 4];
+const initialValue = 0;
+const sumWithInitial = array2.reduce((previousValue, currentValue) =&gt; {
+  return previousValue + currentValue;
+}, initialValue);
+console.log(sumWithInitial); // 10</code></pre><p id="3c40a233-52cd-46fb-b1d7-1f73d60838a0" class="">
+</p><h2 id="5967ae6a-8719-4ae2-b5d6-ded4776f25c9" class="">Object Methods</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ba6a4a99-f5b3-4f65-964b-af3c7029c3aa" class="code"><code class="language-JavaScript">// =&gt; for...in - The for...in statement iterates over all enumerable properties
+// of an object that are keyed by strings (ignoring ones keyed by Symbols),
+// including inherited enumerable properties.
+
+const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}</code></pre><h2 id="8ac1e1e7-83e2-4e12-9be4-43839a3b0b43" class="">Falsey Values</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="83714f46-9643-4bbf-9bf6-25888cb828a4" class="code"><code class="language-JavaScript">// =&gt; Falsey values
+
+// undefined
+// false
+// null
+// NaN
+// &#x27;&#x27; or &quot;&quot;
+// 0
+
+console.log(Boolean(undefined));
+console.log(Boolean(false));
+console.log(Boolean(null));
+console.log(Boolean(NaN));
+console.log(Boolean(&quot;&quot;));
+console.log(Boolean(0));
+
+// =&gt; Confusing values
+console.log(Boolean([]));
+console.log(Boolean({}));</code></pre><p id="39a571ad-8ca3-4d2b-9448-b98e12e45e8f" class="">
+</p><h2 id="5e07c905-4e0b-4bee-8489-321d05c73620" class="">this</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="61630487-c3ad-471f-ace2-6312d27605ad" class="code"><code class="language-JavaScript">// =&gt; this is used to access te current context
+const exObj = {
+  name: &quot;Hello&quot;,
+  last: &quot;World&quot;,
+  displayMessage: function () {
+    return `${this.name} - ${this.last}`;
+  },
+};
+
+console.log(exObj.displayMessage());</code></pre><p id="b2249cd9-346a-490b-be0c-6cecc91c8f09" class="">
+</p><h2 id="9064b93b-e033-47d8-8236-9b21b9f16684" class="">== vs ===</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5d7253a5-13c2-438a-83f8-1d915b7ac7ef" class="code"><code class="language-JavaScript">// == check for only value ( 5 == 5 =&gt; true ) ( &quot;5&quot; == 5 =&gt; true )
+
+// === check for value and type ( 5 === 5 =&gt; true ) ( &quot;5&quot; === 5 =&gt; false )</code></pre><p id="55f9d196-cd83-43ff-a5df-360fe031d510" class="">
+</p><h2 id="9a661af0-f68c-4a99-8ce8-4cbe38fbd4be" class="">Coercion</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="106da41d-9d7c-473e-b1ab-9f91a1a42dcd" class="code"><code class="language-JavaScript">// Type coercion is the automatic or implicit conversion of values from one
+// data type to another (such as strings to numbers). Type conversion is similar
+// to type coercion because they both convert values from one data type to another
+// with one key difference — type coercion is implicit whereas type conversion
+// can be either implicit or explicit.
+
+const value1 = &quot;5&quot;;
+const value2 = 9;
+let sum = value1 + value2;
+
+console.log(sum);</code></pre><p id="1531f23e-aa91-41b0-be83-898c1d866bad" class="">
+</p><h2 id="d5cd2d12-da59-4284-ab73-1fd339e953ce" class="">typeof</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="132558d0-6740-462e-ba40-346b5ee3dfac" class="code"><code class="language-JavaScript">// The typeof operator returns a string indicating the type of the unevaluated
+// operand.
+
+console.log(typeof 42);
+// expected output: &quot;number&quot;
+
+console.log(typeof &quot;blubber&quot;);
+// expected output: &quot;string&quot;
+
+console.log(typeof true);
+// expected output: &quot;boolean&quot;
+
+console.log(typeof undeclaredVariable);
+// expected output: &quot;undefined&quot;
+
+console.log(typeof function () {});
+// expected output: &quot;function&quot;
+
+// Gotchas: All not primitives will return &quot;object&quot;, you will need to check what
+// type of object is by using a prototype function instead</code></pre><p id="e883055a-cea6-48ea-b7ad-a305e7a3648c" class="">
+</p><h2 id="cfb999cf-400a-4b08-91ea-94e805dd58fa" class="">delete</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ef6cefd2-c463-4d16-abb3-fa380f2757f8" class="code"><code class="language-JavaScript">// The JavaScript delete operator removes a property from an object; if no more
+// references to the same property are held, it is eventually released
+// automatically.
+
+const Employee = {
+  firstname: &quot;John&quot;,
+  lastname: &quot;Doe&quot;,
+};
+
+console.log(Employee.firstname);
+// expected output: &quot;John&quot;
+
+delete Employee.firstname;
+
+console.log(Employee.firstname);
+// expected output: undefined
+
+console.log(Employee);
+// expected output: { lastname: &#x27;Doe&#x27;}
+
+// The use of delete is not recommended to use since we don&#x27;t want to be changing
+// the data model in our objects across our app, this could lead to crashed and
+// bugs. Instead we could set the values of that property to some initial value
+// like 0, null or empty string.</code></pre><p id="c0883aec-2bfd-4adf-af43-a27e7b618cdb" class="">
+</p><h2 id="bd36d7ee-d6f1-41ef-a3ba-cb81777e9207" class="">Object Notation</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="32528f8b-d780-434d-8158-8c550f5f0ad6" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// Dot notation =&gt; We can access the object&#x27;s properties and methods using dot notation. The object name (person) acts as the namespace — it must be entered first to access anything inside the object. Next you write a dot, then the item you want to access — this can be the name of a simple property, an item of an array property, or a call to one of the object&#x27;s methods, for example:
+
+const person = {
+  name: [&quot;Bob&quot;, &quot;Smith&quot;],
+  age: 32,
+  bio() {
+    return `${this.name[0]} ${this.name[1]} is ${this.age} years old.`;
+  },
+  introduceSelf() {
+    return `Hi! I&#x27;m ${this.name[0]}.`;
+  },
+};
+
+console.log(person.age);
+console.log(person.bio());
+
+// Bracket Notation =&gt; There is another way to access object properties — using bracket notation. This looks very similar to how you access the items in an array, and it is basically the same thing — instead of using an index number to select an item, you are using the name associated with each member&#x27;s value. It is no wonder that objects are sometimes called associative arrays — they map strings to values in the same way that arrays map numbers to values.
+
+console.log(person[&quot;age&quot;]);
+console.log(person[&quot;name&quot;]);</code></pre><p id="561e34bb-2da2-4fc0-9627-2a37c7236445" class="">
+</p><h2 id="58d84b19-ca44-470c-ac38-135ed268ae03" class="">Strict Mode</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="65fc08b4-d48f-47d0-baab-9f96fcc9c192" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">//  JavaScript&#x27;s strict mode, introduced in ECMAScript 5, is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of &quot;sloppy mode&quot;. Strict mode isn&#x27;t just a subset: it intentionally has different semantics from normal code. Browsers not supporting strict mode will run strict mode code with different behavior from browsers that do, so don&#x27;t rely on strict mode without feature-testing for support for the relevant aspects of strict mode. Strict mode code and non-strict mode code can coexist, so scripts can opt into strict mode incrementally.
+
+// Strict mode makes several changes to normal JavaScript semantics:
+
+// Eliminates some JavaScript silent errors by changing them to throw errors.
+// Fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that&#x27;s not strict mode.
+// Prohibits some syntax likely to be defined in future versions of ECMAScript.</code></pre><p id="e91b3ad1-74ef-420f-bd50-24ea9ff46130" class="">
+</p><h2 id="50a0b075-f503-4513-be90-38ccfffd59f6" class="">Anonymous Functions</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a3e1cf74-042b-4533-9343-aded8e8194fe" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">//  An anonymous function is a function without a name. An anonymous function is not accessible after its initial creation. Therefore, you often need to assign it to a variable.
+
+const func = function () {
+  console.log(&quot;AnonFunc&quot;);
+};
+
+func();</code></pre><p id="57fa83a8-f460-4ce4-8b4b-f81e161781d3" class="">
+</p><h2 id="17e36900-c59f-4be7-a479-3765ef0c6733" class="">Callbacks</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="44b8a4b6-4a20-48fc-af55-4c3377d812a9" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
+
+function greeting(name) {
+  alert(&quot;Hello &quot; + name);
+}
+
+function processUserInput(callback) {
+  var name = prompt(&quot;Please enter your name.&quot;);
+  callback(name);
+}
+
+processUserInput(greeting);
+
+// The above example is a synchronous callback, as it is executed immediately.
+
+// Note, however, that callbacks are often used to continue code execution after an asynchronous operation has completed — these are called asynchronous callbacks. A good example is the callback functions executed inside a .then() block chained onto the end of a promise after that promise fulfills or rejects. This structure is used in many modern web APIs, such as fetch().</code></pre><p id="908c93d6-e3ad-462b-8f6e-f9c4ef0fff31" class="">
+</p><h2 id="09f1c7e2-2f86-4432-8025-ddca25c8dce6" class="">Closures</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="574e2337-c50e-47b8-8d00-2bf5c0b14793" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function&#x27;s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
+
+const add = (function () {
+  let counter = 0;
+
+  return function () {
+    counter++;
+    return counter;
+  };
+})();
+
+console.log(add()); // 1
+console.log(add()); // 2
+console.log(add()); // 3</code></pre><p id="cd625537-eb27-4b2c-a011-0624d1302814" class="">
+</p><h2 id="57043fdd-4e07-4af1-9fec-96fe4ace1cb5" class="">Naming and Standards</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f3c36118-bd2a-4c54-afde-af4574cefad6" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// For JS, camel case, when dealing with booleans try to use the &quot;isHas&quot; prefix or something similar, when dealing with function call that return something prefixed with a verb &quot;getValue&quot;, &quot;setValue&quot; etc. and have some consistency across the board with the arrange convention, ex. lets name &quot;update...&quot; to the functions that use PUT ajax calls and so forth.
+
+// CSS dashed naming
+
+// Ultimately the ideal set up will be where you insert yourself in the company&#x27;s workflow and improve and add code following all the conventions of that the company is already in place, so this is a very open ended question that really depend on the company preexistign workflow and architectures.</code></pre><p id="224b920d-062b-4b89-a159-bc724506e062" class="">
+</p><h2 id="caabb9d5-9bed-4ad7-bdf3-57acebcf353d" class="">Empty Array</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d1b66930-ab61-4b07-b945-8f4c50b2aaa5" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// How to empty an array
+
+// array = [];
+
+// array.length = 0;
+
+// while(array.length &gt; 0) {
+//     array.pop();
+// }
+
+// while(array.length &gt; 0) {
+//     array.shift();
+// }</code></pre><p id="cbc637bf-17de-4889-b481-a6627dcf0861" class="">
+</p><h2 id="50a7d8ae-c382-4744-a2a1-10d8bac3a45e" class="">MUL Function</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bcc4ff0-8b37-482c-92b6-b069d6b06d36" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// In this function, we call the function that required an argument as a first number, and that function calls another function that required another argument and this step goes on.
+
+function mul(x) {
+  return function (y) {
+    return function (z) {
+      return x * y * z;
+    };
+  };
+}
+
+console.log(mul(5)(2)(3));</code></pre><p id="bcece5f1-fd27-4830-8a7a-3b69f34a608f" class="">
+</p><h2 id="59da2c5c-6dcb-4ed1-b7fc-9e3f520adfeb" class="">Create Array</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4381730a-65e3-489f-a886-d5b616ed1a8d" class="code"><code class="language-undefined">// const arr = [1];
+
+// const arr2 = arr1.map((val) =&gt; {
+//   return val + 1;
+// });
+
+// const badArr = new Array();</code></pre><p id="fdf06b9b-fe80-436d-a1a3-776c1dad2516" class="">
+</p><h2 id="ec4ae08b-e173-4bc5-9ea8-ff63e124785c" class="">Undefined vs Undeclared vs null</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12a81c8a-75a5-4f05-9d21-5d7f1c1d2633" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">//  undeclared =&gt; variable does not exist
+
+//  undefined =&gt; The value undefined means value is not assigned &amp; you don’t know its value. It is an unintentional absence of value. It means that a variable has been declared but has not yet been assigned a value. In case of non primitives like objects or arrays it can mean lack of existence, but the object does exist in that case.
+
+//  null =&gt; The value null indicates that you know that the field does not have a value. It is an intentional absence of value. The system does not return null, is an intentional value.</code></pre><p id="8bf44e91-bafc-47a1-8550-56e2f78f753d" class="">
+</p><h2 id="e8bb5b01-d803-4d75-a78a-92d048215277" class="">0.2 + 0.1</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8564fd90-f377-4781-b44a-f891952dc25e" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">//  Problem, math in JS is a little weird using decimals
+
+// Problem
+console.log(0.2 + 0.1);
+
+// Solution
+console.log((0.2 + 0.1).toFixed(1));</code></pre><p id="a2ddee66-3659-4d42-85d1-76d1ea3e5f48" class="">
+</p><h2 id="e5f4df24-7aff-4b0d-9e19-fd5ba29d1be8" class="">instanceof</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3a0675b2-87db-4ea3-9083-1642ccaff902" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// Is use when check for prototypes in JS. Not very useful to check against primitives.
+
+console.log(4 instanceof Number);
+console.log(&quot;Hello world&quot; instanceof String);
+
+console.log({} instanceof Object);
+console.log([] instanceof Object);
+
+class Circle {}
+const circle = new Circle();
+console.log(circle instanceof Circle);
+console.log(circle instanceof Object);</code></pre><p id="4be0c54c-f5c8-4102-ac8f-4b146d7cf629" class="">
+</p><h2 id="cbcf7b08-450a-415a-91b5-b9f70589a5df" class="">IIFE</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="db4bd5c2-2038-4a60-8932-712dda03c84c" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">//  Inmediately Invoqued Function Expression
+
+function noIIFE() {
+  console.log(&quot;IIFE&quot;);
+}
+
+(function IIFE() {
+  console.log(&quot;IIFE&quot;);
+})();</code></pre><p id="92c76aab-d1ad-4ec1-b0be-172fc60e0962" class="">
+</p><h2 id="229a247c-3e19-4658-9979-c13039265533" class="">Maintaining State and Local Storage</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="02cd41df-4c1f-488d-a86f-5b28e1d624c1" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// Using a 3rd Party Store like Redux
+// Using Local Storage || Session Storage
+// Using cookies
+// Global variables (bad idea)
+
+localStorage.setItem(&quot;firstName&quot;, &quot;Marx&quot;);
+console.log(localStorage.getItem(&quot;firstName&quot;)); // Marx
+
+const user = JSON.stringify({
+  name: &quot;John&quot;,
+  last: &quot;Doe&quot;,
+});
+
+localStorage.setItem(&quot;user&quot;, user);
+console.log(JSON.parse(localStorage.getItem(&quot;user&quot;))); // { name: &quot;John&quot;, last: &quot;Doe&quot; }
+
+localStorage.clear();
+localStorage.removeItem();
+
+// etc</code></pre><p id="347bc7cf-e4e2-43dc-a9de-04b6516ff621" class="">
+</p><h2 id="d40c09ff-e702-416c-a12c-e0d02a441be0" class="">HTML5 API</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="796b310e-db71-49c9-a8ab-1749800893e5" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// Geolocation API
+
+if (navigator.geolocation) {
+  // navigator object gives you access to location, check first if exist, some browsers block it
+  navigator.geolocation.getCurrentPosition(
+    (pos) =&gt; {
+      console.log(&quot;Location&quot;, pos);
+    },
+    () =&gt; {
+      console.log(&quot;No location&quot;);
+    }
+  );
+}
+
+// Drang and Drop API
+// Wep Workers API
+// and more...</code></pre><p id="40125e08-bc12-48fe-aec6-003635a4de98" class="">
+</p><h2 id="9eb46858-26c9-437d-a051-954a736480cf" class="">Destructuring Objects and Arrays</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6d6968fd-1e1f-454a-b4c1-5091df2ad78c" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// A way to selectively work with objects and array.
+
+const [month, day, year] = [08, 09, 1990];
+console.log(`${month}/${day}/${year}`);
+
+const { name: firstName, nickname } = {
+  last: &quot;Doe&quot;,
+  name: &quot;John&quot;,
+  middle: &quot;Arthur&quot;,
+  nickname: &quot;Johnny&quot;,
+};
+
+console.log(firstName);
+console.log(nickname);</code></pre><p id="6cab29c2-49d2-46b0-89d4-e0f71cb79553" class="">
+</p><h2 id="699cc872-bdba-4090-bac0-7346e77f6317" class="">Rest Parameter and Spread Operator</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a75f7a4e-4ef1-4158-871f-464fb99c4cbc" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
+
+// Old code
+function add1(num) {
+  console.log(num); // 5
+  console.log(Array.prototype.slice.call(arguments)); // [5, 6, 7, 8] Do the job but not very clean
+  console.log([].slice.call(arguments)); // [5, 6, 7, 8] Do the job but not very clean
+  console.log(Array.from(arguments)); // [5, 6, 7, 8] Do the job but not very clean
+}
+add1(1, 2, 3, 4, 5);
+
+// New code
+function add2(...num) {
+  console.log(num); // [6, 7, 8, 9, 10]
+}
+add2(6, 7, 8, 9, 10);
+
+// Spread syntax (...) allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
+function add3(num) {
+  const vals = [1, 2, 3, 4, 5, ...num];
+  console.log(vals); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+add3([6, 7, 8, 9, 10]);</code></pre><p id="6c1c710b-2d3d-4858-959a-ed7326fd9c94" class="">
+</p><h2 id="a1971d19-83c7-4087-9667-fc36f4497a4e" class="">Arrow Functions</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12125ee3-0d11-4162-aea7-7a9ac17aad0b" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// An arrow function expression is a compact alternative to a traditional function expression, but is limited and can&#x27;t be used in all situations.
+
+// Differences &amp; Limitations:
+
+// Does not have its own bindings to this or super, and should not be used as methods.
+// Does not have new.target keyword.
+// Not suitable for call, apply and bind methods, which generally rely on establishing a scope.
+// Can not be used as constructors.
+// Can not use yield, within its body.
+
+// Old code
+function example1(param1) {
+  return param1 + 1;
+}
+console.log(example1(9));
+
+// New code
+const example2 = (param2) =&gt; param2 + 2;
+console.log(example2(8));
+
+// New code variant
+const example3 = (param3) =&gt; {
+  return param3 + 3;
+};
+console.log(example3(7));</code></pre><p id="578c4267-5f21-465b-b721-f23af8d1ab6f" class="">
+</p><h2 id="cc86db97-ee5c-4a21-bff6-c2a3f653f2f1" class="">NaN</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5260ebd1-1aef-4687-8279-04e8dec100fa" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// typeof Nan = Number
+// We will get NaN when we try to do something not supported by the language
+
+console.log(&quot;&quot; / 0);
+console.log(0 / 0);
+console.log(parseInt(&quot;hello&quot;));
+
+console.log(isNaN(NaN));</code></pre><p id="159047e7-4250-4a98-b296-442259c9a8c7" class="">
+</p><h2 id="d0f8f579-faa5-4cc8-85bb-6d81358e9ec5" class="">DOM Selectors</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ab5211c8-5ed7-4007-9788-4adf4d3b8947" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// There are 4 main way of do this
+
+document.getElementById(&quot;id-example&quot;);
+
+document.getElementsByTagName(&quot;h1&quot;);
+
+document.getElementsByClassName(&quot;class-example&quot;);
+
+// Slower solutions
+document.querySelector(&quot;body&quot;);
+document.querySelectorAll(&quot;h1.some-class&quot;);</code></pre><p id="10d852af-6ccb-41e9-ac29-735d4a8047e7" class="">
+</p><h2 id="f8137ba1-c112-431f-abee-8b330a6a7db9" class="">Copy Objects</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2018d90a-4e29-4348-88a6-66d9a05d8720" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const obj1 = {
+  first: &quot;John&quot;,
+  last: &quot;Doe&quot;,
+  contry: &quot;USA&quot;,
+};
+console.log(obj1);
+
+const obj2 = { ...obj1 }; // Best way
+obj2.first = &quot;Jane&quot;;
+console.log(obj1);
+console.log(obj2);
+
+const obj4 = JSON.parse(JSON.stringify(obj1));
+obj4.first = &quot;Isaak&quot;;
+console.log(obj1);
+console.log(obj4);
+
+const obj3 = obj1; // Bad idea. Pass by reference.
+obj3.first = &quot;Joe&quot;;
+console.log(obj1);
+console.log(obj3);
+
+// How to check if 2 objects are the same. Not have the sane value, are the same object itself, aka are pointing to the same space in memory.
+console.log(Object.is(obj1, obj2));
+console.log(Object.is(obj1, obj3));
+console.log(Object.is(obj1, obj4));</code></pre><p id="ee080af6-6075-4c14-8e89-7bc089017b2d" class="">
+</p><h2 id="aed929c5-c53d-45ef-842c-8a005982cbfc" class="">Comparing 2 Objects</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b2f87078-3d26-4bff-82cb-adb97ea55be4" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const user1 = {
+  first: &quot;John&quot;,
+  last: &quot;Doe&quot;,
+  country: &quot;USA&quot;,
+};
+
+const user2 = {
+  first: &quot;John&quot;,
+  last: &quot;Doe&quot;,
+  country: &quot;USA&quot;,
+};
+
+console.log(user1 === user2); // No good. These comparisons don&#x27;t work with non primitives
+
+// If keys are in the same order
+const stringUser1 = JSON.stringify(user1);
+const stringUser2 = JSON.stringify(user2);
+console.log(stringUser1 === stringUser2);
+
+function isSameObject(obj1, obj2) {
+  const prop1 = Object.getOwnPropertyNames(obj1);
+  const prop2 = Object.getOwnPropertyNames(obj2);
+
+  console.log(prop1);
+  console.log(prop2);
+
+  if (prop1.length != prop2.length) {
+    return false;
+  }
+
+  for (let i = 0; i &lt; prop1.length; i++) {
+    // Create an array with the properties so we can use after. Doesnt matter is if prop1 or prop2, they both have the same properties as filtered on the previous if statement.
+    const properties = prop1[i];
+
+    if (obj1[properties] !== obj2[properties]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log(isSameObject(user1, user2));</code></pre><p id="79bdf089-cd70-412d-9116-b6330dc6d47f" class="">
+</p><h2 id="1eb83be3-9073-4923-bf7b-1f186006d877" class="">Service Workers</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="20e41ebe-5f1a-4048-8a72-6ee3bd22f1a0" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// Service workers essentially act as proxy servers that sit between web applications, the browser, and the network (when available). They are intended, among other things, to enable the creation of effective offline experiences, intercept network requests and take appropriate action based on whether the network is available, and update assets residing on the server. They will also allow access to push notifications and background sync APIs.
+
+// The Worker interface of the Web Workers API represents a background task that can be created via script, which can send messages back to its creator.
+
+// A service worker is an event-driven worker registered against an origin and a path. It takes the form of a JavaScript file that can control the web-page/site that it is associated with, intercepting and modifying navigation and resource requests, and caching resources in a very granular fashion to give you complete control over how your app behaves in certain situations (the most obvious one being when the network is not available).
+
+// A service worker is run in a worker context: it therefore has no DOM access, and runs on a different thread to the main JavaScript that powers your app, so it is non-blocking. It is designed to be fully async; as a consequence, APIs such as synchronous XHR and Web Storage can&#x27;t be used inside a service worker.
+
+// Service workers only run over HTTPS, for security reasons. Having modified network requests, wide open to man in the middle attacks would be really bad. In Firefox, Service Worker APIs are also hidden and cannot be used when the user is in private browsing mode.</code></pre><p id="db0ded38-6b9c-457b-b1cf-46f696ef7e54" class="">
+</p><h2 id="66eed405-be4e-4edd-87df-113eb2a812b6" class="">Removing Duplicates</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0aef7f8b-a7fb-45af-b142-d40b12b3df06" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// Removing duplicate from arra can be done by 2 methos. One is convert the array in a set, which doesnt allow duplicates, and we are done. And the second methos involves iterate our array and call the method includes against the original aray while we build our final array with no duplicated.
+
+// Method 1
+
+const nums = [1, 1, 2, 2, 2, 3, 3, 3];
+const numSet = new Set();
+nums.forEach((value) =&gt; numSet.add(value));
+const newNums = Array.from(numSet);
+console.log(newNums);
+
+// Method 2
+
+const singleValArr = [];
+nums.forEach((value) =&gt; {
+    if(!singleValArr.includes(value)) {
+        singleValArr.push(value);
+    }
+});
+
+console.log(singleValArr);</code></pre><p id="1c3763b6-1023-4f26-9ba8-addac7d954ac" class="">
+</p><h2 id="322320bc-b0e6-415f-a532-a35d555fd21c" class="">Async &amp; Await </h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c09affc1-97d5-4861-b8af-2cc6a0b4bede" class="code"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;script&gt;
+    // async function getUsers() {
+    //     console.log(1);
+    //     try {
+    //         const res = await fetch(&quot;https://api.github.com/users/carlostrujillo90&quot;);
+    //         const response = await res.json();
+    //         console.log(response);
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    //     console.log(2);
+    // }
+    // getUsers();
+
+
+    function getUsers() {
+        console.log(1);
+
+        fetch(&quot;https://api.github.com/users/carlostrujillo90&quot;)
+            .then((res) =&gt; console.log(res.json()));
+
+        console.log(2);
+    }
+    getUsers();
+&lt;/script&gt;</code></pre><p id="e53c0800-68a6-4b11-8e92-dacb3a7ca80c" class="">
+</p><h2 id="83b67cc7-a201-47a7-8a4f-c5590bb73e7d" class="">Promises</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="410149a9-8062-4420-ba7e-88fa60642b3a" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+// const myPromise = new Promise((resolve, reject) =&gt; {
+//   setTimeout(() =&gt; {
+//     resolve(&quot;foo&quot;);
+//   }, 300);
+// });
+
+// myPromise
+//   .then(handleResolvedA, handleRejectedA)
+//   .then(handleResolvedB, handleRejectedB)
+//   .then(handleResolvedC, handleRejectedC);
+
+let myFirstPromise = new Promise((resolve, reject) =&gt; {
+  // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+  // In this example, we use setTimeout(...) to simulate async code.
+  // In reality, you will probably be using something like XHR or an HTML5 API.
+  setTimeout(function () {
+    resolve(&quot;Success!&quot;); // Yay! Everything went well!
+  }, 250);
+});
+
+myFirstPromise.then((successMessage) =&gt; {
+  // successMessage is whatever we passed in the resolve(...) function above.
+  // It doesn&#x27;t have to be a string, but if it is only a succeed message, it probably will be.
+  console.log(&quot;Yay! &quot; + successMessage);
+});</code></pre><p id="3dd8a008-4721-455e-9b07-683d9fcb7158" class="">
+</p><h2 id="ca1d0aed-50a3-45e9-9432-2b5b36201c1c" class="">HTTP Methods</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9bb79799-0293-413c-9fea-dd1871938933" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// HTTP defines a set of request methods to indicate the desired action to be performed for a given resource. Although they can also be nouns, these request methods are sometimes referred to as HTTP verbs. Each of them implements a different semantic, but some common features are shared by a group of them: e.g. a request method can be safe, idempotent, or cacheable.
+
+// GET
+// The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
+
+// HEAD
+// The HEAD method asks for a response identical to a GET request, but without the response body.
+
+// POST
+// The POST method submits an entity to the specified resource, often causing a change in state or side effects on the server.
+
+// PUT
+// The PUT method replaces all current representations of the target resource with the request payload.
+
+// DELETE
+// The DELETE method deletes the specified resource.
+
+// CONNECT
+// The CONNECT method establishes a tunnel to the server identified by the target resource.
+
+// OPTIONS
+// The OPTIONS method describes the communication options for the target resource.
+
+// TRACE
+// The TRACE method performs a message loop-back test along the path to the target resource.
+
+// PATCH
+// The PATCH method applies partial modifications to a resource.</code></pre><p id="3a58b6bf-97b0-4f2a-939e-35c8a02ac479" class="">
+</p><h2 id="003bc3f8-c12c-423f-ac46-1536c2264b70" class="">HTTP Response Status</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fb09565f-7930-441e-8171-566d81a28119" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+// Informational responses (100–199)
+// Successful responses (200–299)
+// Redirection messages (300–399)
+// Client error responses (400–499)
+// Server error responses (500–599)</code></pre><p id="8f99afe2-16f3-458d-81b3-4ba71b5536f0" class="">
+</p><h2 id="ac2bd02f-0861-400a-bece-4f28f445bd34" class="">REST</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b9b02bb0-fea5-459d-b347-8b4f381ebe81" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// REST (Representational State Transfer) refers to a group of software architecture design constraints that bring about efficient, reliable and scalable distributed systems.
+
+// The basic idea of REST is that a resource, e.g. a document, is transferred via well-recognized, language-agnostic, and reliably standardized client/server interactions. Services are deemed RESTful when they adhere to these constraints.
+
+// HTTP APIs in general are sometimes colloquially referred to as RESTful APIs, RESTful services, or REST services, although they don&#x27;t necessarily adhere to all REST constraints. Beginners can assume a REST API means an HTTP service that can be called using standard web libraries and tools.
+
+
+// The six constraints are:
+
+// Uniform Interface: The uniform interface constraint defines the interface between clients and servers. It simplifies and decouples the architecture, which enables each part to evolve independently.
+
+// Stateless: As REST is an acronym for REpresentational State Transfer, statelessness is key. Essentially, what this means is that the necessary state to handle the request is contained within the request itself, whether as part of the URI, query-string parameters, body, or headers. The URI uniquely identifies the resource and the body contains the state (or state change) of that resource. Then after the server does it&#x27;s processing, the appropriate state, or the piece(s) of state that matter, are communicated back to the client via headers, status and response body.
+
+// Cacheable: As on the World Wide Web, clients can cache responses. Responses must therefore, implicitly or explicitly, define themselves as cacheable, or not, to prevent clients reusing stale or inappropriate data in response to further requests. Well-managed caching partially or completely eliminates some client–server interactions, further improving scalability and performance.
+
+// Client-Server: The uniform interface separates clients from servers. This separation of concerns means that, for example, clients are not concerned with data storage, which remains internal to each server, so that the portability of client code is improved. Servers are not concerned with the user interface or user state, so that servers can be simpler and more scalable. Servers and clients may also be replaced and developed independently, as long as the interface is not altered.
+
+// Layered System: A client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way. Intermediary servers may improve system scalability by enabling load-balancing and by providing shared caches. Layers may also enforce security policies.
+
+// Code on Demand (optional): Servers are able to temporarily extend or customize the functionality of a client by transferring logic to it that it can execute. Examples of this may include compiled components such as Java applets and client-side scripts such as JavaScript. Complying with these constraints, and thus conforming to the REST architectural style, will enable any kind of distributed hypermedia system to have desirable emergent properties, such as performance, scalability, simplicity, modifiability, visibility, portability and reliability.</code></pre><p id="30dadd02-dc71-48eb-8d30-586df836dcdb" class="">
+</p><h2 id="267020ea-9fc3-422f-ac7a-1cf36a53bb4d" class=""> Synchronous vs Asynchronous</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bcd701b8-97eb-42e7-ad26-74170c216308" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// In synchronous operations tasks are performed one at a time and only when one is completed, the following is unblocked. In other words, you need to wait for a task to finish to move to the next one.
+
+// In asynchronous operations, on the other hand, you can move to another task before the previous one finishes. This way, with asynchronous programming you’re able to deal with multiple requests simultaneously, thus completing more tasks in a much shorter period of time.</code></pre><p id="b951fa21-c85f-4e21-8169-d7efd273967b" class="">
+</p><h2 id="4654d84b-6929-4e04-a732-fea517578fb5" class="">Timers</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e61cc6f5-607b-49c8-9fde-1a87c6ad0ca0" class="code"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;script&gt;
+    // The setTimeout() method calls a function after a number of milliseconds.
+    let timer = setTimeout(() =&gt; { console.log(&quot;Hello World&quot;) }, 3000);
+
+    // The setInterval() method, offered on the Window and Worker interfaces, repeatedly calls a function or executes a code snippet, with a fixed time delay between each call.
+    // This method returns an interval ID which uniquely identifies the interval, so you can remove it later by calling clearInterval() or clearTimeout().
+    let interval = setInterval(myCallback, 3000, &#x27;Parameter 1&#x27;, &#x27;Parameter 2&#x27;);
+    function myCallback(a, b) {
+        // Your code here
+        // Parameters are purely optional.
+        console.log(a);
+        console.log(b);
+    }
+
+    // The global clearTimeout() or clearInterval() method cancels a timer previously established.
+    clearTimeout(interval);
+&lt;/script&gt;</code></pre><p id="72ac778e-1484-4927-8e4e-17412ffc55cc" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
